@@ -26,7 +26,10 @@ module.exports = {
 
       { test: /\.jsx$/,
         loader: 'babel',
-        query: { presets: ['es2015', 'react'] },
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: ['transform-class-properties'],
+        },
         exclude: /node_modules/,
       },
     ]
@@ -35,9 +38,9 @@ module.exports = {
   postcss: function(webpack) { return [
     require('postcss-import')({ addDependencyTo: webpack }),
     require('postcss-nested'),
-    require('postcss-custom-properties'),
-    require('postcss-custom-media'),
-    require('postcss-calc'),
+    //require('postcss-custom-properties'),
+    //require('postcss-custom-media'),
+    //require('postcss-calc'),
     require('autoprefixer'),
   ] },
 
