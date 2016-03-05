@@ -1,8 +1,9 @@
 :local(.className) {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 
   > * {
-    flex-basis: 20%;
+    flex-basis: 18%;
   }
 }

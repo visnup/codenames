@@ -1,0 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+:local(.className) {
+  display: block;
+  box-sizing: border-box;
+  font: normal 24pt Lato, sans-serif;
+  text-align: center;
+  border: solid 1px lightgray;
+  border-radius: 3px;
+  padding: 1em;
+}
