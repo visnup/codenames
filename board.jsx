@@ -3,9 +3,7 @@ import Card from './card'
 
 class Board extends React.Component {
   render() {
-    return <div>
-             <Card word="hello" />
-           </div>
+    return <div>{this.props.words.map(word => <Card word={word} />)}</div>
   }
 }
 

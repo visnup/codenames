@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'source-map',
 
   entry: {
-    main: './index.js',
+    main: './index.jsx',
     vendor: [
       'react',
     ]
@@ -24,12 +24,10 @@ module.exports = {
       { test: /\.css$/,
         loaders: ['style', 'css', 'postcss'] },
 
-      { test: /\.jade$/, loader: 'jade' },
-
-      { test: /\.js$/,
-        exclude: /node_modules/,
+      { test: /\.jsx$/,
         loader: 'babel',
-        query: { presets: ['es2015', 'react'] }
+        query: { presets: ['es2015', 'react'] },
+        exclude: /node_modules/,
       },
     ]
   },
@@ -44,12 +42,15 @@ module.exports = {
   ] },
 
   resolve: {
-    extensions: [ '', '.js' ],
+    extensions: [ '', '.js', '.jsx' ],
     root: path.resolve(__dirname),
   },
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+    new webpack.ProvidePlugin({
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
     new HtmlWebpackPlugin(),
   ],
 
