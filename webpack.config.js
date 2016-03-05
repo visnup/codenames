@@ -9,7 +9,11 @@ module.exports = {
   entry: {
     main: './index.jsx',
     vendor: [
+      'qs',
       'react',
+      'react-dom',
+      'lodash',
+      'whatwg-fetch',
     ]
   },
 
