@@ -7,6 +7,7 @@ import Board from './board'
 class App extends React.Component {
   state = {
     words: [],
+    reveal: true,
     first: sample(['red', 'blue'])
   }
 
@@ -26,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    return <Board words={this.state.words} first={this.state.first} />
+    return <Board {...this.state} />
   }
 }
 

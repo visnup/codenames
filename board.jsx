@@ -18,7 +18,10 @@ class Board extends React.Component {
     return (
       <div {...css}>
         {this.props.words.map((word, i) => {
-          return <Card key={String(word.id)} word={word.word} color={this.state.map[i]} />
+          return <Card
+            key={String(word.id)}
+            word={word.word}
+            color={this.props.reveal && this.state.map[i]} />
         })}
       </div>
     )
