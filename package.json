@@ -1,7 +1,7 @@
 {
   "name": "codenames",
   "version": "1.0.0",
-  "description": "",
+  "description": "Codenames ========= A web version of the card game Codenames.",
   "main": "index.jsx",
   "dependencies": {
     "autoprefixer": "6.3.3",
@@ -33,5 +33,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visnup/codenames.git"
+  },
+  "bugs": {
+    "url": "https://github.com/visnup/codenames/issues"
+  },
+  "homepage": "https://github.com/visnup/codenames#readme"
 }
