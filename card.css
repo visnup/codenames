@@ -5,7 +5,7 @@
   box-sizing: border-box;
   font: normal 24pt Lato, sans-serif;
   text-align: center;
-  border: solid 1px lightgray;
+  border: solid 1px hsla(0, 0%, 0%, .1);
   border-radius: 3px;
   padding: 1em;
 }

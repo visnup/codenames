@@ -1,12 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { shuffle } from 'lodash'
+import { sample, shuffle } from 'lodash'
 import qs from 'qs'
 import Board from './board'
 
 class App extends React.Component {
   state = {
-    words: []
+    words: [],
+    first: sample(['red', 'blue'])
   }
 
   componentDidMount() {
@@ -21,14 +22,11 @@ class App extends React.Component {
     })
     fetch(`http://api.wordnik.com/v4/words.json/randomWords?${params}`)
       .then(res => res.json())
-      .then((json) => {
-        console.log(json.length)
-        this.setState({ words: shuffle(json) })
-      })
+      .then((json) => { this.setState({ words: shuffle(json) }) })
   }
 
   render() {
-    return <Board words={this.state.words} />
+    return <Board words={this.state.words} first={this.state.first} />
   }
 }
 

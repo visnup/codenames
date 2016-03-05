@@ -1,13 +1,24 @@
 import React from 'react'
+import { concat, fill, shuffle } from 'lodash'
 import Card from './card'
 import css from './board.css'
 
+const distribution = concat(
+  fill(Array(8), 'red'),
+  fill(Array(8), 'blue'),
+  fill(Array(7), 'bystander'),
+  'assassin'
+)
 class Board extends React.Component {
+  state = {
+    map: shuffle(concat(distribution, this.props.first))
+  }
+
   render() {
     return (
-      <div className={css.className}>
-        {this.props.words.map(word => {
-          return <Card key={String(word.id)} word={word.word} />
+      <div {...css}>
+        {this.props.words.map((word, i) => {
+          return <Card key={String(word.id)} word={word.word} color={this.state.map[i]} />
         })}
       </div>
     )
