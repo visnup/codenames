@@ -28,6 +28,10 @@ module.exports = {
         loaders: ['style', 'css', 'postcss'] },
 
       { test: /\.jsx$/,
+        loader: 'react-hot',
+        exclude: /node_modules/,
+      },
+      { test: /\.jsx$/,
         loader: 'babel',
         query: {
           presets: ['es2015', 'react'],

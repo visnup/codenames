@@ -27,6 +27,7 @@
     "whatwg-fetch": "0.11.0"
   },
   "devDependencies": {
+    "react-hot-loader": "1.3.0",
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
