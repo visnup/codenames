@@ -8,4 +8,9 @@
   border: solid 1px hsla(0, 0%, 0%, .1);
   border-radius: 3px;
   padding: 1em;
+
+  &.red { background-color: hsl(0, 50%, 75%) }
+  &.blue { background-color: hsl(230, 50%, 75%) }
+  &.assassin { background-color: hsl(0, 0%, 75%) }
+  &.bystander { background-color: hsl(60, 50%, 85%) }
 }
