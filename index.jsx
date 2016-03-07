@@ -7,13 +7,13 @@ import Board from './board'
 class App extends React.Component {
   state = {
     words: [],
-    reveal: true,
+    reveal: false,
     first: sample(['red', 'blue'])
   }
 
   componentDidMount() {
     const params = qs.stringify({
-      includePartOfSpeech: 'noun,verb',
+      includePartOfSpeech: 'noun,verb-transitive',
       minCorpusCount: 100000,
       minDictionaryCount: 5,
       minLength: 3,

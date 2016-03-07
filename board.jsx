@@ -9,22 +9,36 @@ const distribution = concat(
   fill(Array(7), 'bystander'),
   'assassin'
 )
+
 class Board extends React.Component {
   state = {
-    map: shuffle(concat(distribution, this.props.first))
+    map: shuffle(concat(distribution, this.props.first)),
+    reveal: fill(Array(25), false)
   }
 
   render() {
     return (
       <div {...css}>
         {this.props.words.map((word, i) => {
-          return <Card
-            key={String(word.id)}
-            word={word.word}
-            color={this.props.reveal && this.state.map[i]} />
+          let reveal = this.props.reveal || this.state.reveal[i]
+          let onClick = this.toggleCard.bind(this, i)
+          return (
+            <Card
+              key={String(word.id)}
+              word={word.word}
+              color={reveal && this.state.map[i]}
+              onClick={onClick}
+            />
+          )
         })}
       </div>
     )
+  }
+
+  toggleCard(i) {
+    this.setState({
+      reveal: this.state.reveal.map((value, j) => i === j || value)
+    })
   }
 }
 
