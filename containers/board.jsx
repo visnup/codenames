@@ -1,45 +1,29 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-import { concat, fill, shuffle } from 'lodash'
 import css from './board.css'
 import Card from '../components/card'
 
-const distribution = concat(
-  fill(Array(8), 'red'),
-  fill(Array(8), 'blue'),
-  fill(Array(7), 'bystander'),
-  'assassin'
-)
-
 class Board extends React.Component {
   static propTypes = {
-    first: PropTypes.string.isRequired,
-    words: PropTypes.array
-  }
-
-  state = {
-    types: shuffle(concat(distribution, this.props.first)),
-    reveal: fill(Array(25), false)
-  }
-
-  revealCard(i) {
-    this.setState({
-      reveal: this.state.reveal.map((value, j) => i === j || value)
-    })
+    double: PropTypes.string.isRequired,
+    words: PropTypes.array,
+    types: PropTypes.array,
+    reveal: PropTypes.array,
+    revealCard: PropTypes.func.isRequired
   }
 
   render() {
     return (
       <div {...css}>
         {this.props.words.map((word, i) => {
-          let onClick = this.revealCard.bind(this, i)
           return (
             <Card
               key={String(word.id)}
               word={word.word}
-              type={this.state.types[i]}
-              reveal={this.state.reveal[i]}
-              onClick={onClick}
+              type={this.props.types[i]}
+              reveal={this.props.reveal[i]}
+              onClick={() => this.props.revealCard(i)}
             />
           )
         })}
@@ -48,4 +32,19 @@ class Board extends React.Component {
   }
 }
 
-export default Board
+function mapStateToProps(state) {
+  return state
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    revealCard: (i) => {
+      dispatch({ type: 'reveal', i })
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Board)
