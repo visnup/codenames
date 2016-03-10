@@ -9,10 +9,13 @@ module.exports = {
   entry: {
     main: './index.jsx',
     vendor: [
+      'classnames',
       'lodash',
       'qs',
       'react',
-      'react-dom'
+      'react-dom',
+      'react-redux',
+      'redux'
     ]
   },
 
