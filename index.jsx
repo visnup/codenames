@@ -2,17 +2,16 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-
 import { fill, sample, shuffle } from 'lodash'
 import qs from 'qs'
+
 import Board from './containers/board'
 
 let store = createStore((state, action) => {
   if (typeof state === 'undefined') {
-    const double = sample(['red', 'blue'])
     const distribution = [
-      double,
       'assassin',
+      sample(['red', 'blue']),
       ...fill(Array(8), 'red'),
       ...fill(Array(8), 'blue'),
       ...fill(Array(7), 'bystander')
