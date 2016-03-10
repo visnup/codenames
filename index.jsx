@@ -11,19 +11,19 @@ let store = createStore((state, action) => {
   if (typeof state === 'undefined') {
     const double = sample(['red', 'blue'])
     const distribution = [
+      double,
+      'assassin',
       ...fill(Array(8), 'red'),
       ...fill(Array(8), 'blue'),
-      ...fill(Array(7), 'bystander'),
-      'assassin',
-      double
+      ...fill(Array(7), 'bystander')
     ]
     return {
       words: [],
       reveal: fill(Array(25), false),
-      types: shuffle(distribution),
-      double
+      types: shuffle(distribution)
     }
   }
+
   switch (action.type) {
     case 'fetch_words':
       return { ...state, words: action.words }

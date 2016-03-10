@@ -6,7 +6,6 @@ import Card from '../components/card'
 
 class Board extends React.Component {
   static propTypes = {
-    double: PropTypes.string.isRequired,
     words: PropTypes.array,
     types: PropTypes.array,
     reveal: PropTypes.array,
