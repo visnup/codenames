@@ -12,14 +12,14 @@ module.exports = {
       'lodash',
       'qs',
       'react',
-      'react-dom',
+      'react-dom'
     ]
   },
 
   output: {
     filename: process.env.NODE_ENV ?
       'bundle-[name]-[chunkhash].js' : 'bundle-[name].js',
-    sourceMapFilename: '[file].map.json',
+    sourceMapFilename: '[file].map.json'
   },
 
   module: {
@@ -28,13 +28,16 @@ module.exports = {
         loaders: ['style', 'css', 'postcss'] },
 
       { test: /\.jsx$/,
+        loader: 'react-hot',
+        exclude: /node_modules/
+      },
+      { test: /\.jsx$/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react'],
-          plugins: ['transform-class-properties'],
+          presets: ['es2015', 'react', 'stage-1']
         },
-        exclude: /node_modules/,
-      },
+        exclude: /node_modules/
+      }
     ]
   },
 
@@ -44,12 +47,12 @@ module.exports = {
     //require('postcss-custom-properties'),
     //require('postcss-custom-media'),
     //require('postcss-calc'),
-    require('autoprefixer'),
+    require('autoprefixer')
   ] },
 
   resolve: {
     extensions: [ '', '.js', '.jsx' ],
-    root: path.resolve(__dirname),
+    root: path.resolve(__dirname)
   },
 
   plugins: [
@@ -57,10 +60,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin()
   ],
 
   devServer: {
-    historyApiFallback: true,
-  },
+    historyApiFallback: true
+  }
 }
