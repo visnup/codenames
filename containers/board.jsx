@@ -7,8 +7,6 @@ import Card from '../components/card'
 class Board extends React.Component {
   static propTypes = {
     words: PropTypes.array,
-    types: PropTypes.array,
-    reveal: PropTypes.array,
     revealCard: PropTypes.func.isRequired
   }
 
@@ -18,10 +16,9 @@ class Board extends React.Component {
         {this.props.words.map((word, i) => {
           return (
             <Card
+              {...word}
               key={String(word.id)}
-              word={word.word}
-              type={this.props.types[i]}
-              reveal={this.props.spymaster || this.props.reveal[i]}
+              reveal={this.props.spymaster || word.reveal}
               onClick={() => this.props.revealCard(i)}
             />
           )

@@ -9,18 +9,9 @@ import App from './containers/app'
 
 let store = createStore((state, action) => {
   if (typeof state === 'undefined') {
-    const distribution = [
-      'assassin',
-      sample(['red', 'blue']),
-      ...fill(Array(8), 'red'),
-      ...fill(Array(8), 'blue'),
-      ...fill(Array(7), 'bystander')
-    ]
     return {
       words: [],
-      reveal: fill(Array(25), false),
-      spymaster: false,
-      types: shuffle(distribution)
+      spymaster: false
     }
   }
 
@@ -28,7 +19,7 @@ let store = createStore((state, action) => {
     case 'fetch_words':
       return { ...state, words: action.words }
     case 'reveal':
-      return { ...state, reveal: state.reveal.map((value, j) => action.i === j || value) }
+      return { ...state, words: state.words.map((word, j) => action.i === j ? { ...word, reveal: true } : word) }
     case 'spymaster':
       return { ...state, spymaster: !state.spymaster }
     default:
@@ -47,7 +38,23 @@ const query = qs.stringify({
 })
 fetch(`http://api.wordnik.com/v4/words.json/randomWords?${query}`)
   .then(res => res.json())
-  .then((json) => { store.dispatch({ type: 'fetch_words', words: shuffle(json) }) })
+  .then((json) => {
+    const distribution = shuffle([
+      'assassin',
+      sample(['red', 'blue']),
+      ...fill(Array(8), 'red'),
+      ...fill(Array(8), 'blue'),
+      ...fill(Array(7), 'bystander')
+    ])
+    let words = shuffle(json.map((word, i) => {
+      return {
+        ...word,
+        type: distribution[i],
+        reveal: false
+      }
+    }))
+    store.dispatch({ type: 'fetch_words', words })
+  })
 
 render(
   <Provider store={store}>
