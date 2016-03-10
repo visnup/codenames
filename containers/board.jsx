@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+
 import { concat, fill, shuffle } from 'lodash'
-import Card from './card'
 import css from './board.css'
+import Card from '../components/card'
 
 const distribution = concat(
   fill(Array(8), 'red'),
@@ -11,34 +12,39 @@ const distribution = concat(
 )
 
 class Board extends React.Component {
+  static propTypes = {
+    first: PropTypes.string.isRequired,
+    words: PropTypes.array
+  }
+
   state = {
-    map: shuffle(concat(distribution, this.props.first)),
+    types: shuffle(concat(distribution, this.props.first)),
     reveal: fill(Array(25), false)
+  }
+
+  revealCard(i) {
+    this.setState({
+      reveal: this.state.reveal.map((value, j) => i === j || value)
+    })
   }
 
   render() {
     return (
       <div {...css}>
         {this.props.words.map((word, i) => {
-          let reveal = this.props.reveal || this.state.reveal[i]
-          let onClick = this.toggleCard.bind(this, i)
+          let onClick = this.revealCard.bind(this, i)
           return (
             <Card
               key={String(word.id)}
               word={word.word}
-              color={reveal && this.state.map[i]}
+              type={this.state.types[i]}
+              reveal={this.state.reveal[i]}
               onClick={onClick}
             />
           )
         })}
       </div>
     )
-  }
-
-  toggleCard(i) {
-    this.setState({
-      reveal: this.state.reveal.map((value, j) => i === j || value)
-    })
   }
 }
 

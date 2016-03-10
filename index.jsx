@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { sample, shuffle } from 'lodash'
 import qs from 'qs'
-import Board from './board'
+import Board from './containers/board'
 
 class App extends React.Component {
   state = {
