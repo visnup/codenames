@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import { fill, sample, shuffle } from 'lodash'
 import qs from 'qs'
 
-import Board from './containers/board'
+import App from './containers/app'
 
 let store = createStore((state, action) => {
   if (typeof state === 'undefined') {
@@ -19,6 +19,7 @@ let store = createStore((state, action) => {
     return {
       words: [],
       reveal: fill(Array(25), false),
+      spymaster: false,
       types: shuffle(distribution)
     }
   }
@@ -28,6 +29,8 @@ let store = createStore((state, action) => {
       return { ...state, words: action.words }
     case 'reveal':
       return { ...state, reveal: state.reveal.map((value, j) => action.i === j || value) }
+    case 'spymaster':
+      return { ...state, spymaster: !state.spymaster }
     default:
       return state
   }
@@ -48,7 +51,7 @@ fetch(`http://api.wordnik.com/v4/words.json/randomWords?${query}`)
 
 render(
   <Provider store={store}>
-    <Board />
+    <App />
   </Provider>,
   document.body.appendChild(document.createElement('div'))
 )

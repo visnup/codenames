@@ -21,7 +21,7 @@ class Board extends React.Component {
               key={String(word.id)}
               word={word.word}
               type={this.props.types[i]}
-              reveal={this.props.reveal[i]}
+              reveal={this.props.spymaster || this.props.reveal[i]}
               onClick={() => this.props.revealCard(i)}
             />
           )
@@ -43,7 +43,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Board)
+export default connect(mapStateToProps, mapDispatchToProps)(Board)
