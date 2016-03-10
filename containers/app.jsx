@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import css from './app.css'
 import Board from './board'
 
 class App extends React.Component {
@@ -11,10 +12,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div {...css}>
         <label>
           <input type="checkbox" checked={this.props.spymaster} onClick={this.props.toggleSpymaster} />
-          I am spymaster {this.props.spymaster}!
+          I am spymaster
         </label>
         <Board />
       </div>
