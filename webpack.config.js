@@ -62,7 +62,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': process.env.NODE_ENV
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
