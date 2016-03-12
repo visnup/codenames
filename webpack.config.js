@@ -9,10 +9,13 @@ module.exports = {
   entry: {
     main: './index.jsx',
     vendor: [
+      'classnames',
       'lodash',
       'qs',
       'react',
-      'react-dom'
+      'react-dom',
+      'react-redux',
+      'redux'
     ]
   },
 
@@ -27,17 +30,19 @@ module.exports = {
       { test: /\.css$/,
         loaders: ['style', 'css', 'postcss'] },
 
-      { test: /\.jsx$/,
+      { test: /\.jsx?$/,
         loader: 'react-hot',
         exclude: /node_modules/
       },
-      { test: /\.jsx$/,
+      { test: /\.jsx?$/,
         loader: 'babel',
         query: {
           presets: ['es2015', 'react', 'stage-1']
         },
         exclude: /node_modules/
-      }
+      },
+
+      { test: /\.json$/, loader: 'json' }
     ]
   },
 
@@ -60,7 +65,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({ title: 'Codenames' })
   ],
 
   devServer: {
