@@ -20,8 +20,7 @@ module.exports = {
   },
 
   output: {
-    filename: process.env.NODE_ENV ?
-      'bundle-[name]-[chunkhash].js' : 'bundle-[name].js',
+    filename: 'bundle-[name].js',
     sourceMapFilename: '[file].map.json'
   },
 
