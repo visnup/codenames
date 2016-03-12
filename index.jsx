@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { chain, fill, sample, shuffle } from 'lodash'
 
-import reducers from './reducers'
 import App from './containers/app'
+import reducers from './reducers'
 
 let store = createStore(reducers)
 
@@ -17,7 +17,7 @@ const distribution = shuffle([
   ...fill(Array(8), 'blue'),
   ...fill(Array(7), 'bystander')
 ])
-store.dispatch({ type: 'fetch_words',
+store.dispatch({ type: 'words',
   words: chain(words)
     .shuffle()
     .sampleSize(25)

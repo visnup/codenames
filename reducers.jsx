@@ -7,7 +7,7 @@ const reducers = (state, action) => {
   }
 
   switch (action.type) {
-    case 'fetch_words':
+    case 'words':
       return { ...state, words: action.words }
     case 'reveal':
       return { ...state, words: state.words.map((word, j) => action.i === j ? { ...word, reveal: true } : word) }
