@@ -30,17 +30,19 @@ module.exports = {
       { test: /\.css$/,
         loaders: ['style', 'css', 'postcss'] },
 
-      { test: /\.jsx$/,
+      { test: /\.jsx?$/,
         loader: 'react-hot',
         exclude: /node_modules/
       },
-      { test: /\.jsx$/,
+      { test: /\.jsx?$/,
         loader: 'babel',
         query: {
           presets: ['es2015', 'react', 'stage-1']
         },
         exclude: /node_modules/
-      }
+      },
+
+      { test: /\.json$/, loader: 'json' }
     ]
   },
 
