@@ -14,7 +14,10 @@ class App extends React.Component {
     return (
       <div {...css}>
         <label>
-          <input type="checkbox" checked={this.props.spymaster} onClick={this.props.toggleSpymaster} />
+          <input
+            type="checkbox"
+            checked={this.props.spymaster}
+            onClick={this.props.toggleSpymaster} />
           I am spymaster
         </label>
         <Board />

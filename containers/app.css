@@ -1,4 +1,10 @@
+@import 'normalize.css';
+
 :local(.className) {
   font: 16pt Lato, sans-serif;
   text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
