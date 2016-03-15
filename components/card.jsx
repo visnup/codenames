@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import classNames from 'classNames'
+import classnames from 'classnames'
 import { omit } from 'lodash'
 import css from './card.css'
 
@@ -13,7 +13,7 @@ class Card extends React.Component {
 
   render() {
     const { reveal, spy, ...props } = this.props
-    const cx = classNames(css.className, this.props.type, { reveal, spy })
+    const cx = classnames(css.className, this.props.type, { reveal, spy })
     return <h1 {...omit(props, 'id', 'type')} className={cx}>{this.props.word}</h1>
   }
 }
