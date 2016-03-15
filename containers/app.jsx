@@ -10,6 +10,23 @@ class App extends React.Component {
     toggleSpymaster: PropTypes.func
   }
 
+  componentDidMount() {
+    window.addEventListener('deviceorientation', this.onDeviceOrientation)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('deviceorientation', this.onDeviceOrientation)
+  }
+
+  onDeviceOrientation = (e) => {
+    if (this.props.spymaster) {
+      const { beta, gamma } = e
+      if (-50 < beta && beta < 50 && -50 < gamma && gamma < 50) {
+        this.props.toggleSpymaster()
+      }
+    }
+  }
+
   render() {
     return (
       <div {...css}>
@@ -35,7 +52,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    toggleSpymaster: () => {
+    toggleSpymaster() {
       dispatch({ type: 'spymaster' })
     }
   }
