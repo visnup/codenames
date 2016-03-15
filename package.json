@@ -40,7 +40,7 @@
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline -d --devtool=cheap-module-eval-source-map --progress",
+    "start": "webpack-dev-server --host=0.0.0.0 --hot --inline -d --devtool=cheap-module-eval-source-map --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
