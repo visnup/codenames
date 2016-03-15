@@ -30,7 +30,8 @@ class Board extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state
+  const { words, spymaster } = state
+  return { words, spymaster }
 }
 
 function mapDispatchToProps(dispatch) {
