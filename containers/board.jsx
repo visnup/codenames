@@ -19,7 +19,7 @@ class Board extends React.Component {
             <Card
               {...word}
               key={String(word.id)}
-              reveal={this.props.spymaster || word.reveal}
+              spy={this.props.spymaster}
               onClick={() => this.props.revealCard(i)}
             />
           )
@@ -30,7 +30,8 @@ class Board extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state
+  const { words, spymaster } = state
+  return { words, spymaster }
 }
 
 function mapDispatchToProps(dispatch) {
