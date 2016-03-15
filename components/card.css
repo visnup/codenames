@@ -5,11 +5,15 @@
   box-sizing: border-box;
   font: normal 20pt Lato, sans-serif;
   text-align: center;
-  border: solid 1px hsla(0, 0%, 0%, .1);
+  border: dotted 2px hsla(0, 0%, 0%, .1);
   border-radius: 3px;
   padding: 1em .5em;
 
   &.reveal {
+    border: 2px solid hsla(0, 0%, 0%, .5);
+  }
+
+  &.reveal, &.spy {
     &.red { background-color: hsl(0, 50%, 75%) }
     &.blue { background-color: hsl(230, 50%, 75%) }
     &.assassin { background-color: hsl(0, 0%, 75%) }
