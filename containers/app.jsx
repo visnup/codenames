@@ -18,6 +18,7 @@ class App extends React.Component {
             type="checkbox"
             checked={this.props.spymaster}
             onClick={this.props.toggleSpymaster} />
+          {' '}
           I am spymaster
         </label>
         <Board />
