@@ -21,6 +21,7 @@ class Board extends React.Component {
               key={String(word.id)}
               spy={this.props.spymaster}
               onClick={() => this.props.revealCard(i)}
+              onTouchStart={() => this.props.revealCard(i)}
             />
           )
         })}
