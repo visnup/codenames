@@ -8,6 +8,7 @@
   border: dotted 2px hsla(0, 0%, 0%, .1);
   border-radius: 3px;
   padding: 1em .5em;
+  -webkit-tap-highlight-color: transparent;
 
   &.reveal {
     border: 2px solid hsla(0, 0%, 0%, .5);
