@@ -10,7 +10,7 @@ const reducers = (state, action) => {
     case 'words':
       return { ...state, words: action.words }
     case 'reveal':
-      return { ...state, words: state.words.map((word, j) => action.i === j ? { ...word, reveal: true } : word) }
+      return { ...state, words: state.words.map((word, j) => action.i === j ? { ...word, reveal: !word.reveal } : word) }
     case 'spymaster':
       return { ...state, spymaster: !state.spymaster }
     default:
