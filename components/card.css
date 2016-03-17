@@ -12,6 +12,12 @@
 
   &.reveal {
     border: 2px solid hsla(0, 0%, 0%, .5);
+    color: hsla(0, 0%, 0%, .5);
+  }
+
+  &.reveal.spy {
+    border-color: hsla(0, 0%, 0%, .1);
+    color: hsla(0, 0%, 0%, .1);
   }
 
   &.reveal, &.spy {
