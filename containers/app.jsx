@@ -37,7 +37,7 @@ class App extends React.Component {
             <input
               type="checkbox"
               checked={this.props.spymaster}
-              onClick={this.props.toggleSpymaster} />
+              onChange={this.props.toggleSpymaster} />
             {' '}
             I am spymaster
           </label>
