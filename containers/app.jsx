@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { chain } from 'lodash'
 
 import css from './app.css'
 import Board from './board'
@@ -7,6 +8,7 @@ import Board from './board'
 class App extends React.Component {
   static propTypes = {
     spymaster: PropTypes.bool.isRequired,
+    double: PropTypes.string,
     toggleSpymaster: PropTypes.func
   }
 
@@ -30,14 +32,19 @@ class App extends React.Component {
   render() {
     return (
       <div {...css}>
-        <label>
-          <input
-            type="checkbox"
-            checked={this.props.spymaster}
-            onClick={this.props.toggleSpymaster} />
-          {' '}
-          I am spymaster
-        </label>
+        <div className="controls">
+          <label>
+            <input
+              type="checkbox"
+              checked={this.props.spymaster}
+              onClick={this.props.toggleSpymaster} />
+            {' '}
+            I am spymaster
+          </label>
+          <span className="instructions">
+            {this.props.double.toUpperCase()} goes first
+          </span>
+        </div>
         <Board />
       </div>
     )
@@ -46,7 +53,11 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    spymaster: state.spymaster
+    spymaster: state.spymaster,
+    double: chain(state.words)
+              .countBy('type')
+              .findKey(count => count === 9)
+              .value()
   }
 }
 

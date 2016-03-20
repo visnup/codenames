@@ -7,4 +7,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  .controls {
+    margin: -1em 0 1em;
+  }
+
+  .instructions {
+    margin-left: 2em;
+  }
 }

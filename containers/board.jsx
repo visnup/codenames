@@ -20,8 +20,8 @@ class Board extends React.Component {
               {...word}
               key={String(word.id)}
               spy={this.props.spymaster}
-              onClick={() => this.props.revealCard(i)}
-              onTouchStart={() => this.props.revealCard(i)}
+              onClick={e => this.props.revealCard(e, i)}
+              onTouchStart={e => this.props.revealCard(e, i)}
             />
           )
         })}
@@ -37,7 +37,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    revealCard: (i) => {
+    revealCard: (e, i) => {
+      e.preventDefault()
       dispatch({ type: 'reveal', i })
     }
   }
