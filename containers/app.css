@@ -8,7 +8,11 @@
   flex-direction: column;
   justify-content: center;
 
-  label {
+  .controls {
     margin: -1em 0 1em;
+  }
+
+  .instructions {
+    margin-left: 2em;
   }
 }
