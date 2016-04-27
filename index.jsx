@@ -21,7 +21,6 @@ const distribution = shuffle([
 ])
 store.dispatch({ type: 'words',
   words: chain(words)
-    .shuffle()
     .sampleSize(25)
     .map((word, i) => {
       return {

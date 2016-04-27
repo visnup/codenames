@@ -14,5 +14,11 @@
 
   .instructions {
     margin-left: 2em;
+
+    .red, .blue {
+      margin: .5em;
+    }
+    .red { color: hsl(0, 50%, 75%) }
+    .blue { color: hsl(230, 50%, 75%) }
   }
 }

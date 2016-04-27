@@ -30,6 +30,19 @@ class App extends React.Component {
   }
 
   render() {
+    let instructions;
+    if (this.props.counts.blue && this.props.counts.red) {
+      instructions =
+        <span>
+          <span className="blue">{this.props.counts.blue} left</span>
+          <span className="red">{this.props.counts.red} left</span>
+        </span>
+    } else if (!this.props.counts.blue) {
+      instructions = <span className="blue">BLUE wins!</span>
+    } else if (!this.props.counts.red) {
+      instructions = <span className="red">RED wins!</span>
+    }
+
     return (
       <div {...css}>
         <div className="controls">
@@ -41,9 +54,7 @@ class App extends React.Component {
             {' '}
             I am spymaster
           </label>
-          <span className="instructions">
-            {this.props.double.toUpperCase()} goes first
-          </span>
+          <span className="instructions">{instructions}</span>
         </div>
         <Board />
       </div>
@@ -54,9 +65,9 @@ class App extends React.Component {
 function mapStateToProps(state) {
   return {
     spymaster: state.spymaster,
-    double: chain(state.words)
+    counts: chain(state.words)
+              .reject('reveal')
               .countBy('type')
-              .findKey(count => count === 9)
               .value()
   }
 }
